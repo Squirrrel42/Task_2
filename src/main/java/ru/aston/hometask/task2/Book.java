@@ -1,5 +1,6 @@
-package ru.aston.hometask;
+package ru.aston.hometask.task2;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Objects;
@@ -14,14 +15,11 @@ public class Book {
     @JsonProperty("year")
     private final int year;
 
-    public Book() {
-        name = "unknown";
-        author = "unknown";
-        numPages = 1;
-        year = 2000;
-    }
-
-    public Book(String name, String author, int numPages, int year) {
+    @JsonCreator
+    public Book(@JsonProperty("name") String name,
+                @JsonProperty("author") String author,
+                @JsonProperty("numPages") int numPages,
+                @JsonProperty("year") int year) {
         this.name = Objects.requireNonNull(name, "name must not be null");
         this.author = Objects.requireNonNull(author, "author must not be null");
         this.numPages = numPages;
@@ -47,10 +45,17 @@ public class Book {
 
     @Override
     public boolean equals(Object o) {
-        if (o == this) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == this) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Book book = (Book) o;
-        return numPages == book.numPages && year == book.year && Objects.equals(name, book.name) && Objects.equals(author, book.author);
+        return numPages == book.numPages &&
+                year == book.year &&
+                Objects.equals(name, book.name) &&
+                Objects.equals(author, book.author);
     }
 
     @Override

@@ -1,5 +1,17 @@
 [
   {
+    "firstName": "петр",
+    "lastName": "Иванов",
+    "books": [
+      { "name": "Война и мир", "author": "Лев Толстой", "numPages": 1300, "year": 1869 },
+      { "name": "Война и мир", "author": "Лев Толстой", "numPages": 1300, "year": 1869 },
+      { "name": "Война и мир", "author": "Лев Толстой", "numPages": 1300, "year": 1869 },
+      { "name": "Война и мир", "author": "Лев Толстой", "numPages": 1300, "year": 1869 },
+      { "name": "Война и мир", "author": "Лев Толстой", "numPages": 1300, "year": 1869 },
+      { "name": "Война и мир", "author": "Лев Толстой", "numPages": 1300, "year": 1869 }
+    ]
+  },
+  {
     "firstName": "Иван",
     "lastName": "Петров",
     "books": [

@@ -1,22 +1,25 @@
-package ru.aston.hometask;
+package ru.aston.hometask.task2;
 
+import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Stream;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-        InputStream inputStream = Main.class.getResourceAsStream("/students.json");
-        ObjectMapper objectMapper = new ObjectMapper();
+    public static void main(String[] args) {
+        final ObjectMapper objectMapper = new ObjectMapper();
 
-        List<Student> students = objectMapper.readValue(inputStream, new TypeReference<List<Student>>() {});
-        Stream<Student> stream = students.stream();
-        stream
+        final List<Student> students;
+        try {
+            students = objectMapper.readValue(new File("/students.json"), new TypeReference<List<Student>>() {});
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        students.stream()
                 .peek(System.out::println)
                 .map(Student::getBooks)
                 .flatMap(List::stream)
