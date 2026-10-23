@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 public class ChainApp {
 
+    private static final Scanner scanner = new Scanner(System.in);
+
     private static final Map<String, String> clients = Map.of(
             "dostoyevski.fm@mail.ru", "pravo_imeyu",
             "kamu.alber@orange.fr", "cest_la_vie",
@@ -20,7 +22,6 @@ public class ChainApp {
         emailFormat.setNext(emailFinder);
         emailFinder.setNext(passwordFinder);
 
-        Scanner scanner = new Scanner(System.in);
         while (!state.state) {
             System.out.println("Enter your email:");
             String request = scanner.nextLine().trim();

@@ -4,13 +4,14 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class StrategyApp {
+    private static final Scanner scanner = new Scanner(System.in);
     private static final Map<String, Strategy> operations = Map.of(
             "1", new Add(),
             "2", new Substract(),
             "3", new Multiply(),
             "4", new Divide());
 
-    private static float readFloat(Scanner scanner) {
+    private static float readFloat() {
         while (true) {
             String input = scanner.nextLine().trim();
             try {
@@ -22,7 +23,6 @@ public class StrategyApp {
     }
 
     public static void execute() {
-        Scanner scanner = new Scanner(System.in);
         Calculator calculator = new Calculator();
 
         while (true) {
@@ -41,9 +41,9 @@ public class StrategyApp {
             calculator.setStrategy(strategy);
 
             System.out.println("Enter first number:");
-            float a = readFloat(scanner);
+            float a = readFloat();
             System.out.println("Enter second number:");
-            float b = readFloat(scanner);
+            float b = readFloat();
 
             try {
                 System.out.println("Calculated result: " + calculator.calculate(a, b));
