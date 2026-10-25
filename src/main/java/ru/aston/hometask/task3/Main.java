@@ -1,5 +1,6 @@
 package ru.aston.hometask.task3;
 
+import ru.aston.hometask.task3.adapter.AdapterApp;
 import ru.aston.hometask.task3.builder.CharacterCreator;
 import ru.aston.hometask.task3.builder.RPGCharacter;
 import ru.aston.hometask.task3.chainOfResponsibility.ChainApp;
@@ -13,6 +14,7 @@ public class Main {
 //        ChainApp.execute();
 //        RPGCharacter rpgCharacter = CharacterCreator.makeCharacter();
 //        ProxyApp.execute();
-        CoffeeMachine.makeCoffee();
+//        CoffeeMachine.makeCoffee();
+        AdapterApp.execute();
     }
 }
