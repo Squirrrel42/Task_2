@@ -1,10 +1,11 @@
 package ru.aston.hometask.task3.proxy;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class ProxyImageLoader implements ImageLoader {
     private final ImageLoader realImageLoader;
-    private final HashMap<String, Image> cache = new HashMap<>();
+    private final Map<String, Image> cache = new HashMap<>();
 
     public ProxyImageLoader() {
         this.realImageLoader = new RealImageLoader();

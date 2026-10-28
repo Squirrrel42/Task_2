@@ -1,5 +1,7 @@
 package ru.aston.hometask.task3.decorator;
 
+import java.math.BigDecimal;
+
 public class LatteArtDecorator extends CoffeeDecorator{
     public LatteArtDecorator(Coffee wrapped) {
         super(wrapped);
@@ -11,7 +13,7 @@ public class LatteArtDecorator extends CoffeeDecorator{
     }
 
     @Override
-    public float getCost() {
-        return super.getCost() + 100;
+    public BigDecimal getCost() {
+        return super.getCost().add(new BigDecimal("100"));
     }
 }

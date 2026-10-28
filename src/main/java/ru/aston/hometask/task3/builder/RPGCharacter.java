@@ -17,16 +17,24 @@ public class RPGCharacter {
     private final EyeColor eyeColor;
 
 
-    public RPGCharacter(CharacterBuilder builder) {
-        this.name = builder.getName();
-        this.sex = builder.getSex();
-        this.species = builder.getSpecies();
-        this.characterClass = builder.getCharacterClass();
-        this.nickname = builder.getNickname();
-        this.feat = builder.getFeat();
-        this.feature = builder.getFeature();
-        this.hairColor = builder.getHairColor();
-        this.eyeColor = builder.getEyeColor();
+    private RPGCharacter(String name, 
+                         Sex sex, 
+                         Species species, 
+                         CharacterClass characterClass, 
+                         String nickname, 
+                         Feat feat, 
+                         DistinguishingFeature feature, 
+                         HairColor hairColor,
+                         EyeColor eyeColor) {
+        this.name = name;
+        this.sex = sex;
+        this.species = species;
+        this.characterClass = characterClass;
+        this.nickname = nickname;
+        this.feat = feat;
+        this.feature = feature;
+        this.hairColor = hairColor;
+        this.eyeColor = eyeColor;
     }
 
     public String getName() {
@@ -44,7 +52,6 @@ public class RPGCharacter {
     public CharacterClass getCharacterClass() {
         return characterClass;
     }
-
 
     public Optional<String> getNickname() {
         return Optional.ofNullable(nickname);
@@ -91,5 +98,81 @@ public class RPGCharacter {
         }
         b.append('}');
         return b.toString();
+    }
+
+    public static class Builder {
+        // mandatory fields
+        private String name;
+        private Sex sex;
+        private Species species;
+        private CharacterClass characterClass;
+
+        // optional fields
+        private String nickname;
+        private Feat feat;
+        private DistinguishingFeature feature;
+        private HairColor hairColor;
+        private EyeColor eyeColor;
+
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder sex(Sex sex) {
+            this.sex = sex;
+            return this;
+        }
+
+        public Builder species(Species species) {
+            this.species = species;
+            return this;
+        }
+
+        public Builder characterClass(CharacterClass characterClass) {
+            this.characterClass = characterClass;
+            return this;
+        }
+
+        public Builder nickname(String nickname) {
+            this.nickname = nickname;
+            return this;
+        }
+
+        public Builder feat(Feat feat) {
+            this.feat = feat;
+            return this;
+        }
+
+        public Builder feature(DistinguishingFeature feature) {
+            this.feature = feature;
+            return this;
+        }
+
+        public Builder hairColor(HairColor hairColor) {
+            this.hairColor = hairColor;
+            return this;
+        }
+
+        public Builder eyeColor(EyeColor eyeColor) {
+            this.eyeColor = eyeColor;
+            return this;
+        }
+
+        public RPGCharacter build() {
+            if (name == null || name.isBlank()) {
+                throw new IllegalStateException("Character must have a name.");
+            }
+            if (sex == null) {
+                throw new IllegalStateException("Character's sex must be specified.");
+            }
+            if (species == null) {
+                throw new IllegalStateException("Character's species must be specified.");
+            }
+            if (characterClass == null) {
+                throw new IllegalStateException("Character's class must be specified.");
+            }
+            return new RPGCharacter(name, sex, species, characterClass, nickname, feat, feature, hairColor, eyeColor);
+        }
     }
 }

@@ -10,11 +10,11 @@ import ru.aston.hometask.task3.strategy.StrategyApp;
 
 public class Main {
     public static void main(String[] args) {
-//        StrategyApp.execute();
-//        ChainApp.execute();
-//        RPGCharacter rpgCharacter = CharacterCreator.makeCharacter();
-//        ProxyApp.execute();
-//        CoffeeMachine.makeCoffee();
+        StrategyApp.execute();
+        ChainApp.execute();
+        RPGCharacter rpgCharacter = CharacterCreator.makeCharacter();
+        ProxyApp.execute();
+        CoffeeMachine.makeCoffee();
         AdapterApp.execute();
     }
 }

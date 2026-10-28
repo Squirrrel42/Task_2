@@ -6,11 +6,11 @@ class BaseHandler implements Handler{
 
     private Handler nextHandler;
     protected Map<String, String> clients;
-    protected AuthenticationState state;
+    protected AuthenticationState authenticationState;
 
-    public BaseHandler(Map<String, String> clients, AuthenticationState state) {
+    public BaseHandler(Map<String, String> clients, AuthenticationState authenticationState) {
         this.clients = clients;
-        this.state = state;
+        this.authenticationState = authenticationState;
     }
 
     @Override
@@ -19,9 +19,9 @@ class BaseHandler implements Handler{
     }
 
     @Override
-    public void handle(String request) {
+    public void handle(String email, String password) {
         if(nextHandler != null) {
-            nextHandler.handle(request);
+            nextHandler.handle(email, password);
         }
     }
 }

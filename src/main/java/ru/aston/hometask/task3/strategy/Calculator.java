@@ -1,19 +1,19 @@
 package ru.aston.hometask.task3.strategy;
 
+import java.util.Objects;
+
 public class Calculator {
-    private Strategy strategy;
+    private CalculatorStrategy calculatorStrategy;
 
-    public Calculator() {}
-
-    public Calculator(Strategy strategy) {
-        this.strategy = strategy;
+    public Calculator(CalculatorStrategy calculatorStrategy) {
+        this.calculatorStrategy = Objects.requireNonNull(calculatorStrategy);
     }
 
-    public float calculate(float a, float b) {
-        return strategy.execute(a, b);
+    public double calculate(double a, double b) {
+        return calculatorStrategy.execute(a, b);
     }
 
-    public void setStrategy(Strategy strategy) {
-        this.strategy = strategy;
+    public void setStrategy(CalculatorStrategy calculatorStrategy) {
+        this.calculatorStrategy = Objects.requireNonNull(calculatorStrategy);
     }
 }

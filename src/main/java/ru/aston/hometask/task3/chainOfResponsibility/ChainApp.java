@@ -14,19 +14,21 @@ public class ChainApp {
     );
 
     public static void execute() {
-        AuthenticationState state = new AuthenticationState();
-        EmailFormat emailFormat = new EmailFormat(clients, state);
-        EmailFinder emailFinder = new EmailFinder(clients, state);
-        PasswordFinder passwordFinder = new PasswordFinder(clients, state);
+        AuthenticationState authenticationState = new AuthenticationState(false);
+        EmailFormat emailFormat = new EmailFormat(clients, authenticationState);
+        EmailFinder emailFinder = new EmailFinder(clients, authenticationState);
+        PasswordFinder passwordFinder = new PasswordFinder(clients, authenticationState);
 
         emailFormat.setNext(emailFinder);
         emailFinder.setNext(passwordFinder);
 
-        while (!state.state) {
+        while (!authenticationState.state) {
             System.out.println("Enter your email:");
-            String request = scanner.nextLine().trim();
+            String email = scanner.nextLine().trim();
+            System.out.println("Enter your password:");
+            String password = scanner.nextLine().trim();
 
-            emailFormat.handle(request);
+            emailFormat.handle(email, password);
         }
     }
 }

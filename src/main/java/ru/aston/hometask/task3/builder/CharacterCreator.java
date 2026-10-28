@@ -83,18 +83,18 @@ public class CharacterCreator {
         Species species = getEnum(Species.class, "species");
         CharacterClass characterClass = getEnum(CharacterClass.class, "class");
 
-        CharacterBuilder builder = new CharacterBuilder()
-                .setName(name)
-                .setSex(sex)
-                .setSpecies(species)
-                .setCharacterClass(characterClass);
+        RPGCharacter.Builder builder = new RPGCharacter.Builder()
+                .name(name)
+                .sex(sex)
+                .species(species)
+                .characterClass(characterClass);
 
         System.out.println("Give a nickname to your character (press ENTER to skip):");
-        getNickname().ifPresent(builder::setNickname);
-        getOptionalEnum(Feat.class, "feat").ifPresent(builder::setFeat);
-        getOptionalEnum(DistinguishingFeature.class, "distinguishing feature").ifPresent(builder::setFeature);
-        getOptionalEnum(HairColor.class, "hair color").ifPresent(builder::setHairColor);
-        getOptionalEnum(EyeColor.class, "eye color").ifPresent(builder::setEyeColor);
+        getNickname().ifPresent(builder::nickname);
+        getOptionalEnum(Feat.class, "feat").ifPresent(builder::feat);
+        getOptionalEnum(DistinguishingFeature.class, "distinguishing feature").ifPresent(builder::feature);
+        getOptionalEnum(HairColor.class, "hair color").ifPresent(builder::hairColor);
+        getOptionalEnum(EyeColor.class, "eye color").ifPresent(builder::eyeColor);
 
         RPGCharacter rpgCharacter = builder.build();
 

@@ -5,13 +5,13 @@ import java.util.Map;
 public class EmailFormat extends BaseHandler {
 
 
-    public EmailFormat(Map<String, String> clients, AuthenticationState state) {
-        super(clients, state);
+    public EmailFormat(Map<String, String> clients, AuthenticationState authenticationState) {
+        super(clients, authenticationState);
     }
 
     @Override
-    public void handle(String request) {
-        String[] parts = request.split("@");
+    public void handle(String email, String password) {
+        String[] parts = email.split("@");
 
         if (parts.length != 2 || parts[0].isEmpty() || parts[parts.length - 1].isEmpty()) {
             System.out.println("invalid email format.");
@@ -30,6 +30,6 @@ public class EmailFormat extends BaseHandler {
             return;
         }
 
-        super.handle(request);
+        super.handle(email, password);
     }
 }
